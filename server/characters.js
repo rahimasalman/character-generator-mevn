@@ -11,4 +11,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/', async (req, res) => {
+    const character = new Character({
+        name: req.body.name,
+        profession: req.body.profession,
+    });
+    try {
+        const newCharacter = await character.save();
+        res.status(201).json(newCharacter);
+    } catch (err) {
+        res.status(400).json({message: err.message });
+    }
+})
+
 module.exports = router;

@@ -12,8 +12,8 @@ db.once('open', () => console.log('Database Connected Successfully!'));
 server.use(express.json());
 server.use(cors());
 
-server.get("/", (req, res) => {
-    res.send('HELLO WORLD!');
-});
+const router = require('./characters');
+server.use('/characters', router);
+
 
 server.listen(3000, ()=> console.log("Serving on port 3000!"))

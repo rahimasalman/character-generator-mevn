@@ -5,8 +5,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "CharacterViewer",
+  data: function () {
+    return {
+      characters: null
+    }
+},
+  methods: {
+    getCharacters: () => {
+      axios
+      .get('http://localhost:3000/characters')
+      .then(response => (this.characters = response.data))
+    }
+  },
+  mounted: () => {
+    this.getCharacters();
+  }
 };
 </script>
 

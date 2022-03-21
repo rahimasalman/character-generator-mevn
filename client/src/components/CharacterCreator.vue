@@ -22,14 +22,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "CharacterCreator",
-  data: function () {
+  data:  () => {
     return {
-      name: "",
-      profession: "",
+      name: null,
+      profession: null,
     };
   },
+  methods: {
+    postCharacter: () => {
+      axios
+      .post('hhtp//localhost:3000/characters', {
+        name: this.name,
+        profession: this.profession
+      });
+    }
+  }
 };
 </script>
 

@@ -15,9 +15,12 @@
       <option value="Mage">Mage</option>
       <option value="Thief">Thief</option>
       <option value="Warrior">Warrior</option>
-    </select>
-    <p> {{name}}</p>
-    <p> {{profession}}</p>
+    </select>  <br />
+    <br />
+    <button
+    v-on:click="postCharacter">
+      Create Character
+    </button>
   </div>
 </template>
 
@@ -25,18 +28,18 @@
 import axios from 'axios';
 export default {
   name: "CharacterCreator",
-  data:  () => {
+  data:  function ()  {
     return {
       name: null,
       profession: null,
     };
   },
   methods: {
-    postCharacter: () => {
+    postCharacter: function () {
       axios
-      .post('hhtp//localhost:3000/characters', {
+      .post('http://localhost:3000/characters', {
         name: this.name,
-        profession: this.profession
+        profession: this.profession,
       });
     }
   }

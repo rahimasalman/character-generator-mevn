@@ -6,29 +6,15 @@
         v-bind:key="index">
       {{ character.name }} is a {{ character.profession}}
     </p>
-    <button v-on:click="getCharacters">Refresh Characters</button>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   name: "CharacterViewer",
-  data: function () {
-    return {
-      characters: null
-    }
-},
-  methods: {
-    getCharacters: function ()  {
-      axios
-      .get('http://localhost:3000/characters')
-      .then(response => (this.characters = response.data))
-    }
-  },
-  mounted: function () {
-    this.getCharacters();
-  }
+   props: {
+    characters: Array
+}
 };
 </script>
 
